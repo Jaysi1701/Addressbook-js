@@ -1,4 +1,5 @@
 class Contact {
+
     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -11,13 +12,16 @@ class Contact {
     }
 
     toString() {
-        return `${this.firstName} ${this.lastName},
-${this.address},
-${this.city},
-${this.state},
-${this.zip},
-${this.phoneNumber},
-${this.email}`;
+        return `
+First Name   : ${this.firstName}
+Last Name    : ${this.lastName}
+Address      : ${this.address}
+City         : ${this.city}
+State        : ${this.state}
+Zip          : ${this.zip}
+Phone Number : ${this.phoneNumber}
+Email        : ${this.email}
+`;
     }
 }
 
