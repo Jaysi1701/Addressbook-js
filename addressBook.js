@@ -26,32 +26,42 @@ try {
         "david@gmail.com"
     );
 
+    let contact3 = new Contact(
+        "James",
+        "Brown",
+        "GandhiRoad",
+        "Hyderabad",
+        "Telangana",
+        "500001",
+        "9876543212",
+        "james@gmail.com"
+    );
+
     addressBook.push(contact1);
     addressBook.push(contact2);
+    addressBook.push(contact3);
 
-    console.log("Before Editing:");
+    console.log("Before Deletion:");
+
     addressBook.forEach(contact =>
         console.log(contact.toString())
     );
 
-    // UC4 - Find and Edit Contact
+    // UC5 Delete Contact
 
-    let person = addressBook.find(
+    let index = addressBook.findIndex(
         contact =>
-            contact.firstName === "John" &&
-            contact.lastName === "Doe"
+            contact.firstName === "David" &&
+            contact.lastName === "Smith"
     );
 
-    if (person) {
-        person.address = "Velachery";
-        person.city = "Chennai";
-        person.state = "TamilNadu";
-        person.zip = "600042";
-        person.phoneNumber = "9999999999";
-        person.email = "john.doe@gmail.com";
+    if (index !== -1) {
+        addressBook.splice(index, 1);
+        console.log("\nContact Deleted Successfully");
     }
 
-    console.log("\nAfter Editing:");
+    console.log("\nAfter Deletion:");
+
     addressBook.forEach(contact =>
         console.log(contact.toString())
     );
