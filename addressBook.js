@@ -61,22 +61,39 @@ try {
         "peter@gmail.com"
     ));
 
-    console.log("\nBefore Sorting:");
+    // Sort By City
 
-    addressBook.forEach(contact =>
+    console.log("\n===== SORT BY CITY =====");
+
+    let citySorted = [...addressBook].sort(
+        (a, b) => a.city.localeCompare(b.city)
+    );
+
+    citySorted.forEach(contact =>
         console.log(contact.toString())
     );
 
-    // UC11 Sort by First Name
+    // Sort By State
 
-    addressBook.sort(
-        (person1, person2) =>
-            person1.firstName.localeCompare(person2.firstName)
+    console.log("\n===== SORT BY STATE =====");
+
+    let stateSorted = [...addressBook].sort(
+        (a, b) => a.state.localeCompare(b.state)
     );
 
-    console.log("\nAfter Sorting By Name:");
+    stateSorted.forEach(contact =>
+        console.log(contact.toString())
+    );
 
-    addressBook.forEach(contact =>
+    // Sort By Zip
+
+    console.log("\n===== SORT BY ZIP =====");
+
+    let zipSorted = [...addressBook].sort(
+        (a, b) => a.zip.localeCompare(b.zip)
+    );
+
+    zipSorted.forEach(contact =>
         console.log(contact.toString())
     );
 
