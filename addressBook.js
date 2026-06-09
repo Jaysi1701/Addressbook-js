@@ -43,9 +43,9 @@ try {
         "James",
         "Brown",
         "GandhiRoad",
-        "Chennai",
-        "TamilNadu",
-        "600020",
+        "Hyderabad",
+        "Telangana",
+        "500001",
         "9876543212",
         "james@gmail.com"
     ));
@@ -54,35 +54,30 @@ try {
         "Peter",
         "Wilson",
         "RingRoad",
-        "Hyderabad",
-        "Telangana",
-        "500001",
+        "Chennai",
+        "TamilNadu",
+        "600020",
         "9876543213",
         "peter@gmail.com"
     ));
 
-    // Search by City
+    console.log("\nBefore Sorting:");
 
-    let personsInCity = addressBook.filter(
-        person => person.city === "Chennai"
+    addressBook.forEach(contact =>
+        console.log(contact.toString())
     );
 
-    console.log("\nPersons in Chennai:");
+    // UC11 Sort by First Name
 
-    personsInCity.forEach(person =>
-        console.log(person.firstName + " " + person.lastName)
+    addressBook.sort(
+        (person1, person2) =>
+            person1.firstName.localeCompare(person2.firstName)
     );
 
-    // Search by State
+    console.log("\nAfter Sorting By Name:");
 
-    let personsInState = addressBook.filter(
-        person => person.state === "TamilNadu"
-    );
-
-    console.log("\nPersons in TamilNadu:");
-
-    personsInState.forEach(person =>
-        console.log(person.firstName + " " + person.lastName)
+    addressBook.forEach(contact =>
+        console.log(contact.toString())
     );
 
 } catch (error) {
