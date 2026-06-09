@@ -2,6 +2,22 @@ const Contact = require('./Contact');
 
 let addressBook = [];
 
+function addContact(contact) {
+
+    let isDuplicate = addressBook.some(
+        person =>
+            person.firstName === contact.firstName &&
+            person.lastName === contact.lastName
+    );
+
+    if (!isDuplicate) {
+        addressBook.push(contact);
+        console.log(`${contact.firstName} added successfully`);
+    } else {
+        console.log(`Duplicate Contact Found: ${contact.firstName} ${contact.lastName}`);
+    }
+}
+
 try {
 
     let contact1 = new Contact(
@@ -27,44 +43,32 @@ try {
     );
 
     let contact3 = new Contact(
-        "James",
-        "Brown",
-        "GandhiRoad",
-        "Hyderabad",
-        "Telangana",
-        "500001",
-        "9876543212",
-        "james@gmail.com"
+        "John",
+        "Doe",
+        "Velachery",
+        "Chennai",
+        "TamilNadu",
+        "600042",
+        "9999999999",
+        "john.doe@gmail.com"
     );
 
-    addressBook.push(contact1);
-    addressBook.push(contact2);
-    addressBook.push(contact3);
+    addContact(contact1);
+    addContact(contact2);
+    addContact(contact3); // Duplicate
 
-    console.log("Before Deletion:");
+    console.log("\nAddress Book Contacts:");
 
     addressBook.forEach(contact =>
         console.log(contact.toString())
     );
 
-    // UC5 Delete Contact
-
-    let index = addressBook.findIndex(
-        contact =>
-            contact.firstName === "David" &&
-            contact.lastName === "Smith"
+    let count = addressBook.reduce(
+        (total, person) => total + 1,
+        0
     );
 
-    if (index !== -1) {
-        addressBook.splice(index, 1);
-        console.log("\nContact Deleted Successfully");
-    }
-
-    console.log("\nAfter Deletion:");
-
-    addressBook.forEach(contact =>
-        console.log(contact.toString())
-    );
+    console.log("\nTotal Contacts: " + count);
 
 } catch (error) {
     console.error(error);
