@@ -12,26 +12,23 @@ function addContact(contact) {
 
     if (!isDuplicate) {
         addressBook.push(contact);
-        console.log(`${contact.firstName} added successfully`);
-    } else {
-        console.log(`Duplicate Contact Found: ${contact.firstName} ${contact.lastName}`);
     }
 }
 
 try {
 
-    let contact1 = new Contact(
+    addContact(new Contact(
         "John",
         "Doe",
-        "Anna Nagar",
+        "AnnaNagar",
         "Chennai",
         "TamilNadu",
         "600001",
         "9876543210",
         "john@gmail.com"
-    );
+    ));
 
-    let contact2 = new Contact(
+    addContact(new Contact(
         "David",
         "Smith",
         "MGRoad",
@@ -40,35 +37,53 @@ try {
         "560001",
         "9876543211",
         "david@gmail.com"
-    );
+    ));
 
-    let contact3 = new Contact(
-        "John",
-        "Doe",
-        "Velachery",
+    addContact(new Contact(
+        "James",
+        "Brown",
+        "GandhiRoad",
         "Chennai",
         "TamilNadu",
-        "600042",
-        "9999999999",
-        "john.doe@gmail.com"
+        "600020",
+        "9876543212",
+        "james@gmail.com"
+    ));
+
+    addContact(new Contact(
+        "Peter",
+        "Wilson",
+        "RingRoad",
+        "Hyderabad",
+        "Telangana",
+        "500001",
+        "9876543213",
+        "peter@gmail.com"
+    ));
+
+    // Search by City
+
+    let personsInCity = addressBook.filter(
+        person => person.city === "Chennai"
     );
 
-    addContact(contact1);
-    addContact(contact2);
-    addContact(contact3); // Duplicate
+    console.log("\nPersons in Chennai:");
 
-    console.log("\nAddress Book Contacts:");
-
-    addressBook.forEach(contact =>
-        console.log(contact.toString())
+    personsInCity.forEach(person =>
+        console.log(person.firstName + " " + person.lastName)
     );
 
-    let count = addressBook.reduce(
-        (total, person) => total + 1,
-        0
+    // Search by State
+
+    let personsInState = addressBook.filter(
+        person => person.state === "TamilNadu"
     );
 
-    console.log("\nTotal Contacts: " + count);
+    console.log("\nPersons in TamilNadu:");
+
+    personsInState.forEach(person =>
+        console.log(person.firstName + " " + person.lastName)
+    );
 
 } catch (error) {
     console.error(error);
